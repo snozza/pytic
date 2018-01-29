@@ -58,6 +58,12 @@ def moves_for_player(player, moves_played):
     number_of_players = 2
     return moves_played[player::number_of_players]
 
+def test_first_player_wins():
+    game_moves = [0, 3, 1, 5, 2]
+    player = last_player(game_moves)
+    player_moves = moves_for_player(player, game_moves)
+    assert is_win(player_moves) is False
+
 def is_win(player_moves):
     combos = itertools.combinations(player_moves, 3)
     winning_moves = [
